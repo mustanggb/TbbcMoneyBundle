@@ -23,7 +23,7 @@ jobs:
             stability: prefer-stable
           - php: '8.1'
             mongodb-version: '7.0'
-            symfony-version: 6.0.*
+            symfony-version: 6.4.*
             stability: prefer-stable
           - php: '8.2'
             mongodb-version: '7.0'
