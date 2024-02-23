@@ -9,9 +9,9 @@ use Symfony\Component\HttpKernel\Kernel;
 
 class AppKernel extends Kernel
 {
-    public function __construct()
+    public function __construct(string $environment, bool $debug, protected array $configs = [])
     {
-        parent::__construct('test', false);
+        parent::__construct($environment, $debug);
     }
 
     public function registerBundles(): iterable
@@ -26,5 +26,9 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader): void
     {
         $loader->load(__DIR__.'/config/config.yaml');
+
+        foreach ($this->configs as $config) {
+            $loader->load($config);
+        }
     }
 }

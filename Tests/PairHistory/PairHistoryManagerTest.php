@@ -7,6 +7,7 @@ namespace Tbbc\MoneyBundle\Tests\PairHistory;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ObjectRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Tbbc\MoneyBundle\MoneyException;
 use Tbbc\MoneyBundle\Pair\SaveRatioEvent;
 use Tbbc\MoneyBundle\PairHistory\PairHistoryManager;
@@ -23,7 +24,12 @@ class PairHistoryManagerTest extends KernelTestCase
     public function setUp(): void
     {
         parent::setUp();
-        self::bootKernel();
+        self::bootKernel([
+            'environment' => 'testDoctrine',
+            'configs' => [
+                __DIR__.'/../config/doctrine.yaml'
+            ],
+        ]);
         $this->em = self::getContainer()->get('doctrine')->getManager();
         $this->pairHistoryManager = new PairHistoryManager(
             $this->em,
@@ -39,6 +45,17 @@ class PairHistoryManagerTest extends KernelTestCase
         $this->dropDatabase();
         $this->em->close();
         $this->em = null;
+    }
+
+    protected static function createKernel(array $options = []): KernelInterface
+    {
+        static::$class ??= static::getKernelClass();
+
+        $env = $options['environment'] ?? $_ENV['APP_ENV'] ?? $_SERVER['APP_ENV'] ?? 'test';
+        $debug = $options['debug'] ?? $_ENV['APP_DEBUG'] ?? $_SERVER['APP_DEBUG'] ?? true;
+        $configs = $options['configs'] ?? [];
+
+        return new static::$class($env, $debug, $configs);
     }
 
     public function testSaveRatioHistory(): void

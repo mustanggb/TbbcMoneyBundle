@@ -6,6 +6,7 @@ namespace Tbbc\MoneyBundle\Tests\Pair\Storage;
 
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Tbbc\MoneyBundle\Entity\DoctrineStorageRatio;
 use Tbbc\MoneyBundle\Pair\Storage\DoctrineStorage;
 use Tbbc\MoneyBundle\Tests\DatabaseTrait;
@@ -19,7 +20,12 @@ class DoctrineStorageTest extends KernelTestCase
     public function setUp(): void
     {
         parent::setUp();
-        self::bootKernel();
+        self::bootKernel([
+            'environment' => 'testDoctrine',
+            'configs' => [
+                __DIR__.'/../../config/doctrine.yaml'
+            ],
+        ]);
         $this->entityManager = self::getContainer()->get('doctrine')->getManager();
         $this->doctrineStorage = new DoctrineStorage($this->entityManager, 'USD');
         $this->createDatabase();
@@ -29,6 +35,17 @@ class DoctrineStorageTest extends KernelTestCase
     {
         parent::tearDown();
         $this->dropDatabase();
+    }
+
+    protected static function createKernel(array $options = []): KernelInterface
+    {
+        static::$class ??= static::getKernelClass();
+
+        $env = $options['environment'] ?? $_ENV['APP_ENV'] ?? $_SERVER['APP_ENV'] ?? 'test';
+        $debug = $options['debug'] ?? $_ENV['APP_DEBUG'] ?? $_SERVER['APP_DEBUG'] ?? true;
+        $configs = $options['configs'] ?? [];
+
+        return new static::$class($env, $debug, $configs);
     }
 
     public function testLoadDefaultCurrency(): void
