@@ -11,6 +11,8 @@ use Symfony\Component\Console\Output\NullOutput;
 
 trait DatabaseTrait
 {
+    private static array $kernelOptions = [];
+
     public function setupDatabase(): void
     {
         self::dropDatabase();
@@ -24,7 +26,7 @@ trait DatabaseTrait
 
     private static function createDatabase(): void
     {
-        $kernel = static::createKernel();
+        $kernel = static::createKernel(self::$kernelOptions);
         $kernel->boot();
         $application = new Application($kernel);
         $application->setAutoExit(false);
@@ -44,7 +46,7 @@ trait DatabaseTrait
 
     private static function doDropDatabase(): void
     {
-        $kernel = static::createKernel();
+        $kernel = static::createKernel(self::$kernelOptions);
         $kernel->boot();
         $application = new Application($kernel);
         $application->setAutoExit(false);

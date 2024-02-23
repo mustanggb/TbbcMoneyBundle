@@ -20,12 +20,13 @@ class DoctrineStorageTest extends KernelTestCase
     public function setUp(): void
     {
         parent::setUp();
-        self::bootKernel([
+        self::$kernelOptions = [
             'environment' => 'testDoctrine',
             'configs' => [
                 __DIR__.'/../../config/doctrine.yaml'
             ],
-        ]);
+        ];
+        self::bootKernel(self::$kernelOptions);
         $this->entityManager = self::getContainer()->get('doctrine')->getManager();
         $this->doctrineStorage = new DoctrineStorage($this->entityManager, 'USD');
         $this->createDatabase();

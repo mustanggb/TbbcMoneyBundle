@@ -24,12 +24,13 @@ class PairHistoryManagerTest extends KernelTestCase
     public function setUp(): void
     {
         parent::setUp();
-        self::bootKernel([
+        self::$kernelOptions = [
             'environment' => 'testDoctrine',
             'configs' => [
                 __DIR__.'/../config/doctrine.yaml'
             ],
-        ]);
+        ];
+        self::bootKernel(self::$kernelOptions);
         $this->em = self::getContainer()->get('doctrine')->getManager();
         $this->pairHistoryManager = new PairHistoryManager(
             $this->em,
