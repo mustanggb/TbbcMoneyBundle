@@ -1,17 +1,18 @@
 Versions from 6.0
 -----------------
 
-### 2023-10-31 : updates for 6.0.0 version
+### TBD : updates for 6.0.0 version
 
 **New features**
+- Bumped minimum PHP version to PHP ^8.1
+- Add support for MongoDB
 
 **BC breaking changes**
-
-- Drop `YahooFinanceRatioProvider` ratio provider support
-  - Remove `tbbc_money.ratio_provider.yahoo_finance.class` container parameter
-  - Remove `tbbc_money.ratio_provider.yahoo_finance` service definition
-- Drop `GoogleRatioProvider` ratio provider support
-  - Remove `tbbc_money.ratio_provider.google.class` container parameter
-  - Remove `tbbc_money.ratio_provider.google` service definition
+- Drop `symfony/templating` and template function (use twig)
+- Make `PairManagerInterface` readonly in commands
 
 **Internal Developer things**
+- Drop PHPUnit 9 support
+- bump dev dependencies
+- Migrate phpUnit config to version 10.
+
