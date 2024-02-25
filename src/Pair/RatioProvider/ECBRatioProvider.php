@@ -60,7 +60,8 @@ class ECBRatioProvider implements RatioProviderInterface
             throw new MoneyException(sprintf('The currency code "%s" does not exists', $currencyCode));
         }
 
-        if (!$xml = $this->getXML()) {
+        $xml = $this->getXML();
+        if (null === $xml || $xml === '') {
             throw new MoneyException('Could not fetch XML from ECB');
         }
 
