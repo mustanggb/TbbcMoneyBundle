@@ -44,12 +44,12 @@ class CurrencyToArrayTransformer implements DataTransformerInterface
             throw new UnexpectedTypeException($value, 'array');
         }
 
-        if (!isset($value['tbbc_name'])) {
+        if (!is_string($value['tbbc_name']) || '' === $value['tbbc_name']) {
             return null;
         }
 
         try {
-            return new Currency((string) $value['tbbc_name']);
+            return new Currency($value['tbbc_name']);
         } catch (InvalidArgumentException|TypeError $e) {
             throw new TransformationFailedException($e->getMessage());
         }
