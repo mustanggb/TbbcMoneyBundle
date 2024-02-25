@@ -53,7 +53,7 @@ class CsvStorage implements StorageInterface
             [$currencyCode, $ratio] = $data;
 
             // validate that currency exist in currency code list
-            if (!(null !== $currencyCode && strlen($currencyCode) > 0)) {
+            if (null === $currencyCode || $currencyCode === '')) {
                 throw new MoneyException('error in ratioFileName '.$this->ratioFileName.' on line '.$row.', currency is an empty string or is null');
             }
             // @codeCoverageIgnoreStart
