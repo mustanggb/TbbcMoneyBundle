@@ -38,9 +38,9 @@ class MoneyType extends Type
             return null;
         }
 
-        [$currency, $amount] = explode(' ', (string) $value, 2);
+        list($currency, $amount) = explode(' ', (string) $value, 2);
 
-        if (null === $currency || null === $amount) {
+        if ('' === $currency || '' === $amount) {
             return null;
         }
 
