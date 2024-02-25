@@ -45,7 +45,7 @@ class CurrencyToArrayTransformer implements DataTransformerInterface
         }
 
         if (!is_string($value['tbbc_name']) || '' === $value['tbbc_name']) {
-            return null;
+            throw new TransformationFailedException('name can not be an empty string');
         }
 
         try {
