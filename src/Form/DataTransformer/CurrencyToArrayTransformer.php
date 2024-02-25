@@ -33,8 +33,6 @@ class CurrencyToArrayTransformer implements DataTransformerInterface
 
     /**
      * {@inheritdoc}
-     *
-     * @psalm-suppress MixedArgument
      */
     public function reverseTransform(mixed $value): ?Currency
     {
