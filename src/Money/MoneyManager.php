@@ -14,6 +14,9 @@ class MoneyManager implements MoneyManagerInterface
 {
     public function __construct(protected string $referenceCurrencyCode, protected int $decimals = 2)
     {
+        if ('' === $referenceCurrencyCode) {
+            throw new MoneyException('reference currency can not be an empty string');
+        }
     }
 
     /**
