@@ -48,6 +48,10 @@ class CurrencyToArrayTransformer implements DataTransformerInterface
             return null;
         }
 
+        if (!is_string($value['tbbc_name'])) {
+            throw new UnexpectedTypeException($value, 'string');
+        }
+
         if ('' === $value['tbbc_name']) {
             throw new TransformationFailedException('name can not be an empty string');
         }
