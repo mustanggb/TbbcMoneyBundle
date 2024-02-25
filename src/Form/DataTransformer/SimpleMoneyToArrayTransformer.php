@@ -23,7 +23,7 @@ class SimpleMoneyToArrayTransformer extends MoneyToArrayTransformer
      * 
      * @psalm-return array{tbbc_amount: string}|null
      */
-    public function transform($value): ?array
+    public function transform(mixed $value): ?array
     {
         if (!$tab = parent::transform($value)) {
             return null;
