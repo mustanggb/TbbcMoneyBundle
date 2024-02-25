@@ -49,7 +49,7 @@ class CurrencyToArrayTransformer implements DataTransformerInterface
         }
 
         try {
-            return new Currency($value['tbbc_name']);
+            return new Currency((string) $value['tbbc_name']);
         } catch (InvalidArgumentException|TypeError $e) {
             throw new TransformationFailedException($e->getMessage());
         }
