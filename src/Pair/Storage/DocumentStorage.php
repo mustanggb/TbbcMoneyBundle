@@ -15,7 +15,7 @@ use Tbbc\MoneyBundle\Pair\StorageInterface;
  */
 class DocumentStorage implements StorageInterface
 {
-    /** @var array<string, float> */
+    /** @psalm-var array<string, null|float> */
     protected array $ratioList = [];
 
     public function __construct(protected DocumentManager $documentManager, protected string $referenceCurrencyCode)
@@ -53,7 +53,7 @@ class DocumentStorage implements StorageInterface
     }
 
     /**
-     * @param array<string, float> $ratioList
+     * @psalm-param array<string, null|float> $ratioList
      */
     public function saveRatioList(array $ratioList): void
     {
