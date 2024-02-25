@@ -40,11 +40,13 @@ class MoneyType extends Type
 
         $money = explode(' ', (string) $value, 2);
 
-        if (count($money) !== 2) {
+        if (count($money) !== 2 || '' === $money[0] || '' === $money[1]) {
             return null;
         }
 
-        return new Money((int) $money[1], new Currency($money[0]));
+        [$currency, $amount] = $money;
+
+        return new Money((int) $amount, new Currency($currency));
     }
 
     public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): ?string
