@@ -8,6 +8,8 @@ use Money\Money;
 
 /**
  * Transforms between a Money and an array.
+ * 
+ * @implements DataTransformerInterface<Money, array>
  */
 class SimpleMoneyToArrayTransformer extends MoneyToArrayTransformer
 {
@@ -20,6 +22,8 @@ class SimpleMoneyToArrayTransformer extends MoneyToArrayTransformer
 
     /**
      * {@inheritdoc}
+     * 
+     * @psalm-param Money|null $value
      * 
      * @psalm-return array{tbbc_amount: string}|null
      */
@@ -36,6 +40,8 @@ class SimpleMoneyToArrayTransformer extends MoneyToArrayTransformer
 
     /**
      * {@inheritdoc}
+     * 
+     * @psalm-param array|null $value
      */
     public function reverseTransform(mixed $value): ?Money
     {
