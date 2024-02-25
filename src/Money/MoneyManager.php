@@ -21,7 +21,7 @@ class MoneyManager implements MoneyManagerInterface
      */
     public function createMoneyFromFloat(float $floatAmount, ?string $currencyCode = null): Money
     {
-        if (is_null($currencyCode)) {
+        if (is_null($currencyCode) || '' === $currencyCode) {
             $currencyCode = $this->referenceCurrencyCode;
         }
         $currency = new Currency($currencyCode);
