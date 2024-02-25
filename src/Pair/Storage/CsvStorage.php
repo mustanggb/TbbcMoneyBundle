@@ -17,7 +17,7 @@ use Tbbc\MoneyBundle\Pair\StorageInterface;
  */
 class CsvStorage implements StorageInterface
 {
-    /** @var array<string, float> */
+    /** @psalm-var array<string, null|float> */
     protected array $ratioList = [];
 
     public function __construct(protected string $ratioFileName, protected string $referenceCurrencyCode)

@@ -70,8 +70,10 @@ class DocumentStorage implements StorageInterface
         foreach ($ratioList as $currencyCode => $ratio) {
             // load from existing, or create a new
             $existingStorageRatio = $existingStorageRatios[$currencyCode] ?? new DocumentStorageRatio($currencyCode, $ratio);
-            $existingStorageRatio->setRatio($ratio);
-            $this->documentManager->persist($existingStorageRatio);
+            if (null !== $ratio) {
+                $existingStorageRatio->setRatio($ratio);
+                $this->documentManager->persist($existingStorageRatio);
+            }
 
             // remove from the array, as we do not want to remove this one
             unset($existingStorageRatios[$currencyCode]);
