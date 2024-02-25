@@ -13,7 +13,7 @@ class SimpleMoneyToArrayTransformer extends MoneyToArrayTransformer
 {
     protected string $currency = '';
 
-    public function __construct(int $decimals)
+    public function __construct(protected int $decimals)
     {
         parent::__construct($decimals);
     }

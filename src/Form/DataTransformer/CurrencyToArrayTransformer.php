@@ -19,7 +19,7 @@ class CurrencyToArrayTransformer implements DataTransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function transform($value): ?array
+    public function transform(mixed $value): ?array
     {
         if (null === $value) {
             return null;
