@@ -21,7 +21,7 @@ class CurrencyToArrayTransformer implements DataTransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function transform(mixed $value): ?array
+    public function transform(Currency $value): ?array
     {
         if (null === $value) {
             return null;
@@ -36,7 +36,7 @@ class CurrencyToArrayTransformer implements DataTransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function reverseTransform(mixed $value): ?Currency
+    public function reverseTransform(array $value): ?Currency
     {
         if (null === $value) {
             return null;
