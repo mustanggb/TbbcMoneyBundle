@@ -20,6 +20,8 @@ class SimpleMoneyToArrayTransformer extends MoneyToArrayTransformer
 
     /**
      * {@inheritdoc}
+     * 
+     * @psalm-return array{tbbc_amount: string}|null
      */
     public function transform($value): ?array
     {
