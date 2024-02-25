@@ -18,6 +18,8 @@ class CurrencyToArrayTransformer implements DataTransformerInterface
 {
     /**
      * {@inheritdoc}
+     * 
+     * @param mixed $value
      */
     public function transform(mixed $value): ?array
     {
