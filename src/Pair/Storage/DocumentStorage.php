@@ -62,7 +62,9 @@ class DocumentStorage implements StorageInterface
         // index them in an associative array
         $existingStorageRatios = [];
         foreach ($documentStorageRatios as $documentStorageRatio) {
-            $existingStorageRatios[$documentStorageRatio->getCurrencyCode()] = $documentStorageRatio;
+            if (null !== ($code = $documentStorageRatio->getCurrencyCode())) {
+                $existingStorageRatios[$code] = $documentStorageRatio;
+            }
         }
 
         foreach ($ratioList as $currencyCode => $ratio) {
