@@ -12,6 +12,7 @@ use Tbbc\MoneyBundle\MoneyException;
 use Tbbc\MoneyBundle\Pair\SaveRatioEvent;
 use Tbbc\MoneyBundle\PairHistory\DocumentPairHistoryManager;
 use Tbbc\MoneyBundle\Tests\DocumentDatabaseTrait;
+use Tbbc\MoneyBundle\Document\DocumentRatioHistory;
 
 class DocumentPairHistoryManagerTest extends KernelTestCase
 {
@@ -36,7 +37,7 @@ class DocumentPairHistoryManagerTest extends KernelTestCase
             $this->dm,
             'EUR'
         );
-        $this->documentRatioHistoryRepo = $this->dm->getRepository('Tbbc\MoneyBundle\Document\DocumentRatioHistory');
+        $this->documentRatioHistoryRepo = $this->dm->getRepository(DocumentRatioHistory::class);
         $this->createDatabase();
     }
 
@@ -64,12 +65,12 @@ class DocumentPairHistoryManagerTest extends KernelTestCase
         $event = new SaveRatioEvent('EUR', 'USD', 1.25, new \DateTime('2012-07-08 12:00:00'));
         $this->documentPairHistoryManager->listenSaveRatioEvent($event);
         $ratioHistoryList = $this->documentRatioHistoryRepo->findAll();
-        $this->assertSame(1, count($ratioHistoryList));
+        $this->assertCount(1, $ratioHistoryList);
 
         $event = new SaveRatioEvent('EUR', 'USD', 1.50, new \DateTime('2012-07-08 13:00:00'));
         $this->documentPairHistoryManager->listenSaveRatioEvent($event);
         $ratioHistoryList = $this->documentRatioHistoryRepo->findAll();
-        $this->assertSame(2, count($ratioHistoryList));
+        $this->assertCount(2, $ratioHistoryList);
     }
 
     public function testGetRatioList(): void
@@ -82,7 +83,7 @@ class DocumentPairHistoryManagerTest extends KernelTestCase
         $this->documentPairHistoryManager->listenSaveRatioEvent($event);
 
         $ratioList = $this->documentPairHistoryManager->getRatioHistory('USD', null, null);
-        $this->assertSame(3, count($ratioList));
+        $this->assertCount(3, $ratioList);
         $this->assertSame(1.25, $ratioList[0]['ratio']);
         $this->assertSame(1.50, $ratioList[1]['ratio']);
         $this->assertSame(1.75, $ratioList[2]['ratio']);
@@ -91,9 +92,9 @@ class DocumentPairHistoryManagerTest extends KernelTestCase
         $this->assertSame('2012-07-08 14:00:00', $ratioList[2]['savedAt']->format('Y-m-d H:i:s'));
 
         $ratioList = $this->documentPairHistoryManager->getRatioHistory('USD', new \DateTime('2012-07-08 12:30:00'), null);
-        $this->assertSame(2, count($ratioList));
+        $this->assertCount(2, $ratioList);
         $ratioList = $this->documentPairHistoryManager->getRatioHistory('USD', new \DateTime('2012-07-08 12:30:00'), new \DateTime('2012-07-08 13:30:00'));
-        $this->assertSame(1, count($ratioList));
+        $this->assertCount(1, $ratioList);
     }
 
     public function testGetRatio(): void
@@ -116,7 +117,7 @@ class DocumentPairHistoryManagerTest extends KernelTestCase
 
         $ratio = $this->documentPairHistoryManager->getRatioAtDate('EUR', new \DateTime('2011-07-10 12:30:00'));
         $this->assertSame(1.0, $ratio);
-        $this->assertTrue(is_float($ratio));
+        $this->assertIsFloat($ratio);
     }
 
     public function testGetRatioException(): void
