@@ -39,7 +39,7 @@ class PairManager implements PairManagerInterface, Exchange
      */
     public function convert(Money $amount, string $currencyCode): Money
     {
-        if ($currencyCode === '') {
+        if ('' === $currencyCode) {
             throw new MoneyException('currency can not be an empty string');
         }
 
@@ -63,7 +63,7 @@ class PairManager implements PairManagerInterface, Exchange
      */
     public function saveRatio(string $currencyCode, float $ratio): void
     {
-        if ($currencyCode === '') {
+        if ('' === $currencyCode) {
             throw new MoneyException('currency can not be an empty string');
         }
 
@@ -94,11 +94,11 @@ class PairManager implements PairManagerInterface, Exchange
      */
     public function getRelativeRatio(string $referenceCurrencyCode, string $currencyCode): float
     {
-        if ($referenceCurrencyCode === '') {
+        if ('' === $referenceCurrencyCode) {
             throw new MoneyException('reference currency can not be an empty string');
         }
 
-        if ($currencyCode === '') {
+        if ('' === $currencyCode) {
             throw new MoneyException('currency can not be an empty string');
         }
 

@@ -61,7 +61,7 @@ class ECBRatioProvider implements RatioProviderInterface
         }
 
         $xml = $this->getXML();
-        if (null === $xml || $xml === '') {
+        if (null === $xml || '' === $xml) {
             throw new MoneyException('Could not fetch XML from ECB');
         }
 
