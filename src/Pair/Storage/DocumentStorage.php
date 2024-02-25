@@ -22,8 +22,7 @@ class DocumentStorage implements StorageInterface
     }
 
     /**
-     * @psalm-return array<string, float|null>
-     * @return (float|null)[]
+     * @return (float|mixed)[]
      */
     public function loadRatioList(bool $force = false): array
     {
