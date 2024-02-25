@@ -44,8 +44,8 @@ class DocumentStorage implements StorageInterface
 
         foreach ($documentStorageRatios as $documentStorageRatio) {
             if (
-                null !== ($code = $documentStorageRatio->getCurrencyCode())
-                && null !== ($ratio = $documentStorageRatio->getRatio())
+                isset($code = $documentStorageRatio->getCurrencyCode())
+                && isset($ratio = $documentStorageRatio->getRatio())
             ) {
                 $this->ratioList[$code] = $ratio;
             }
