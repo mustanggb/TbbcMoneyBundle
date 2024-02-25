@@ -61,6 +61,10 @@ class MoneyToArrayTransformer implements DataTransformerInterface
             return null;
         }
 
+        if (!is_array($value)) {
+            throw new UnexpectedTypeException($value, 'array');
+        }
+
         if (!isset($value['tbbc_amount']) || !isset($value['tbbc_currency'])) {
             return null;
         }
