@@ -61,6 +61,7 @@ class MoneyToArrayTransformer implements DataTransformerInterface
             return null;
         }
 
+        /** @psalm-suppress DocblockTypeContradiction */
         if (!is_array($value)) {
             throw new UnexpectedTypeException($value, 'array');
         }
