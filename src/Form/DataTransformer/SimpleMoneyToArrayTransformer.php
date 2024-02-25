@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Tbbc\MoneyBundle\Form\DataTransformer;
 
 use Money\Money;
+use Symfony\Component\Form\DataTransformerInterface;
 
 /**
  * Transforms between a Money instance and an array.
  */
-class SimpleMoneyToArrayTransformer extends MoneyToArrayTransformer
+class SimpleMoneyToArrayTransformer extends DataTransformerInterface
 {
     protected string $currency = '';
 

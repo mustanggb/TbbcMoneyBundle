@@ -7,9 +7,9 @@ namespace Tbbc\MoneyBundle\Form\DataTransformer;
 use Money\Currency;
 use Money\Money;
 use Symfony\Component\Form\DataTransformerInterface;
+use Symfony\Component\Form\Exception\TransformationFailedException;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
 use Symfony\Component\Form\Extension\Core\DataTransformer\MoneyToLocalizedStringTransformer;
-use Tbbc\MoneyBundle\MoneyException;
 
 /**
  * Transforms between a Money instance and an array.
@@ -72,7 +72,7 @@ class MoneyToArrayTransformer implements DataTransformerInterface
         $currency = $value['tbbc_currency'];
 
         if ('' === $currency) {
-            throw new MoneyException('currency can not be an empty string');
+            throw new TransformationFailedException('currency can not be an empty string');
         }
 
         if (!$currency instanceof Currency) {
