@@ -21,6 +21,9 @@ class DocumentStorage implements StorageInterface
     {
     }
 
+    /**
+     * @return string[]
+     */
     public function loadRatioList(bool $force = false): array
     {
         if ((false === $force) && (count($this->ratioList) > 0)) {
