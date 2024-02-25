@@ -46,7 +46,7 @@ class DocumentStorage implements StorageInterface
             $code = $documentStorageRatio->getCurrencyCode();
             $ratio = $documentStorageRatio->getRatio();
             if (isset($code) && isset($ratio)) {
-                $this->ratioList[$code] = $ratio;
+                $this->ratioList[(string) $code] = (float) $ratio;
             }
         }
 
