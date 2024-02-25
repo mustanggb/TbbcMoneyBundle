@@ -22,7 +22,7 @@ class DocumentStorage implements StorageInterface
     }
 
     /**
-     * @return (float|mixed)[]
+     * @return array<string, float>
      */
     public function loadRatioList(bool $force = false): array
     {
