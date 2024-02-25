@@ -15,6 +15,7 @@ use Tbbc\MoneyBundle\Pair\StorageInterface;
  */
 class DoctrineStorage implements StorageInterface
 {
+    /** @var array<string, float> */
     protected array $ratioList = [];
 
     public function __construct(protected EntityManagerInterface $entityManager, protected string $referenceCurrencyCode)
