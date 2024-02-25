@@ -26,7 +26,7 @@ class MoneyToArrayTransformer implements DataTransformerInterface
     /**
      * {@inheritdoc}
      *
-     * @psalm-param Money|null
+     * @psalm-param Money|null $value
      * 
      * @psalm-return array{tbbc_amount: string, tbbc_currency: Currency}|array{tbbc_amount: string}|null
      */
