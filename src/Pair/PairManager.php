@@ -26,6 +26,7 @@ class PairManager implements PairManagerInterface, Exchange
 
     public function __construct(
         protected StorageInterface $storage,
+        /** @var string[] */
         protected array $currencyCodeList,
         protected string $referenceCurrencyCode,
         protected EventDispatcherInterface $dispatcher
