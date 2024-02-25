@@ -49,7 +49,7 @@ class MoneyToArrayTransformer implements DataTransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function reverseTransform($value): ?Money
+    public function reverseTransform(mixed $value): ?Money
     {
         if (null === $value) {
             return null;

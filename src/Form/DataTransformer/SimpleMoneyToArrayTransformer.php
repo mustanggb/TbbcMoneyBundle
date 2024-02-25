@@ -37,7 +37,7 @@ class SimpleMoneyToArrayTransformer extends MoneyToArrayTransformer
     /**
      * {@inheritdoc}
      */
-    public function reverseTransform($value): ?Money
+    public function reverseTransform(mixed $value): ?Money
     {
         if (is_array($value)) {
             $value['tbbc_currency'] = $this->currency;

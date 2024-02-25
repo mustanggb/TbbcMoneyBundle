@@ -36,7 +36,7 @@ class CurrencyToArrayTransformer implements DataTransformerInterface
      *
      * @psalm-suppress MixedArgument
      */
-    public function reverseTransform($value): ?Currency
+    public function reverseTransform(mixed $value): ?Currency
     {
         if (null === $value) {
             return null;
