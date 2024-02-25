@@ -69,7 +69,7 @@ class MoneyToArrayTransformer implements DataTransformerInterface
 
         /** @var string|Currency $currency */
         $currency = $value['tbbc_currency'];
-        if (!$currency instanceof Currency) {
+        if (!$currency instanceof Currency && '' !== $currency) {
             $currency = new Currency($currency);
         }
 
