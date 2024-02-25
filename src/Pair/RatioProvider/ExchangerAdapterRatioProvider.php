@@ -52,6 +52,10 @@ final class ExchangerAdapterRatioProvider implements RatioProviderInterface
 
     private function ensureValidCurrency(string $currencyCode): void
     {
+        if (null === $currencyCode || $currencyCode === '') {
+            throw new MoneyException('The currency code is an empty string or is null');
+        }
+
         try {
             new Currency($currencyCode);
         } catch (UnknownCurrencyException|InvalidArgumentException) {
