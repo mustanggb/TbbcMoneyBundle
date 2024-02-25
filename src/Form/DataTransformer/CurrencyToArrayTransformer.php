@@ -35,6 +35,8 @@ class CurrencyToArrayTransformer implements DataTransformerInterface
 
     /**
      * {@inheritdoc}
+     * 
+     * @param mixed $value
      */
     public function reverseTransform(mixed $value): ?Currency
     {

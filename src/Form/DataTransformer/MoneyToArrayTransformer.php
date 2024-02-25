@@ -26,6 +26,8 @@ class MoneyToArrayTransformer implements DataTransformerInterface
     /**
      * {@inheritdoc}
      * 
+     * @param mixed $value
+     * 
      * @psalm-return array{tbbc_amount: string, tbbc_currency: Currency}|array{tbbc_amount: string}|null
      */
     public function transform(mixed $value): ?array
@@ -48,6 +50,8 @@ class MoneyToArrayTransformer implements DataTransformerInterface
 
     /**
      * {@inheritdoc}
+     * 
+     * @param mixed $value
      */
     public function reverseTransform(mixed $value): ?Money
     {
