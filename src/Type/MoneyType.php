@@ -40,7 +40,11 @@ class MoneyType extends Type
 
         list($currency, $amount) = explode(' ', (string) $value, 2);
 
-        return new Money((int) $amount, new Currency($currency));
+        if ('' === $currency || '' === $amount) {
+            return null;
+        }
+
+        return new Money($amount, new Currency($currency));
     }
 
     public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): ?string
