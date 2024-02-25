@@ -40,10 +40,6 @@ class MoneyType extends Type
 
         list($currency, $amount) = explode(' ', (string) $value, 2);
 
-        if ('' === $currency || '' === $amount) {
-            return null;
-        }
-
         return new Money((int) $amount, new Currency($currency));
     }
 
