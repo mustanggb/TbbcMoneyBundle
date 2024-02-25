@@ -22,9 +22,6 @@ class DocumentStorage implements StorageInterface
     {
     }
 
-    /**
-     * @return array<string, float>
-     */
     public function loadRatioList(bool $force = false): array
     {
         if ((false === $force) && (count($this->ratioList) > 0)) {
@@ -44,10 +41,11 @@ class DocumentStorage implements StorageInterface
         $this->ratioList = [];
 
         foreach ($documentStorageRatios as $documentStorageRatio) {
-            $code = $documentStorageRatio->getCurrencyCode();
-            $ratio = $documentStorageRatio->getRatio();
-            if (isset($code) && isset($ratio)) {
-                $this->ratioList[(string) $code] = (float) $ratio;
+            if (
+                null !== ($code = $documentStorageRatio->getCurrencyCode())
+                && null !== ($ratio = $documentStorageRatio->getRatio())
+            ) {
+                $this->ratioList[$code] = $ratio;
             }
         }
 
