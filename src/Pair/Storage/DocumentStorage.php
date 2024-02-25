@@ -56,7 +56,6 @@ class DocumentStorage implements StorageInterface
      */
     public function saveRatioList(array $ratioList): void
     {
-        /** @var DocumentStorageRatio[] $documentStorageRatios */
         $documentStorageRatios = $this->documentManager->getRepository(DocumentStorageRatio::class)->findAll();
 
         // index them in an associative array
