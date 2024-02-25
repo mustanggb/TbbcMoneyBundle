@@ -10,7 +10,7 @@ use Symfony\Component\Form\DataTransformerInterface;
 /**
  * Transforms between a Money instance and an array.
  */
-class SimpleMoneyToArrayTransformer extends DataTransformerInterface
+class SimpleMoneyToArrayTransformer implements DataTransformerInterface
 {
     protected string $currency = '';
 
