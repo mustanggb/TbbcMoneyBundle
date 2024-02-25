@@ -53,7 +53,7 @@ class DocumentStorage implements StorageInterface
     }
 
     /**
-     * @psalm-param array<string, float> $ratioList
+     * @param array<string, float> $ratioList
      */
     public function saveRatioList(array $ratioList): void
     {
