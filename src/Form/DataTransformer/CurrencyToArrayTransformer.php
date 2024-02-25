@@ -12,7 +12,7 @@ use Symfony\Component\Form\Exception\UnexpectedTypeException;
 use TypeError;
 
 /**
- * Transforms between a Currency and a string.
+ * Transforms between a Currency and an array.
  * 
  * @implements DataTransformerInterface<Currency, array>
  */
