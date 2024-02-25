@@ -40,7 +40,7 @@ class MoneyType extends Type
 
         [$currency, $amount] = explode(' ', (string) $value, 2);
 
-        return new Money((string) $amount, new Currency($currency));
+        return new Money((int) $amount, new Currency($currency));
     }
 
     public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): ?string
