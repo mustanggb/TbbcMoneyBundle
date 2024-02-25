@@ -6,6 +6,7 @@ namespace Tbbc\MoneyBundle\Money;
 
 use Money\Currency;
 use Money\Money;
+use Tbbc\MoneyBundle\MoneyException;
 
 /**
  * @author levan
