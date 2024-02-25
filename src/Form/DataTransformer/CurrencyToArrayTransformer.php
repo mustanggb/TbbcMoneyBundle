@@ -13,13 +13,13 @@ use TypeError;
 
 /**
  * Transforms between a Currency and a string.
+ * 
+ * @implements DataTransformerInterface<Currency, array>
  */
 class CurrencyToArrayTransformer implements DataTransformerInterface
 {
     /**
      * {@inheritdoc}
-     * 
-     * @psalm-param TValue|null $value
      */
     public function transform(mixed $value): ?array
     {
@@ -35,8 +35,6 @@ class CurrencyToArrayTransformer implements DataTransformerInterface
 
     /**
      * {@inheritdoc}
-     * 
-     * @psalm-param TTransformedValue|null $value
      */
     public function reverseTransform(mixed $value): ?Currency
     {
