@@ -34,13 +34,13 @@ class MoneyType extends Type
 
     public function convertToPHPValue(mixed $value, AbstractPlatform $platform): ?Money
     {
-        if (null === $value || !preg_match('/\w \w/', (string) $value)) {
+        if (null === $value) {
             return null;
         }
 
-        [$currency, $amount] = explode(' ', (string) $value, 2);
+        $money = explode(' ', (string) $value, 2);
 
-        if ('' === $currency || '' === $amount) {
+        if ('' === $money[0] || '' === $money[1]) {
             return null;
         }
 
