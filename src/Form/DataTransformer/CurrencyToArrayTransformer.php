@@ -19,7 +19,7 @@ class CurrencyToArrayTransformer implements DataTransformerInterface
     /**
      * {@inheritdoc}
      * 
-     * @psalm-param mixed $value
+     * @psalm-param TValue|null $value
      */
     public function transform(mixed $value): ?array
     {
@@ -36,7 +36,7 @@ class CurrencyToArrayTransformer implements DataTransformerInterface
     /**
      * {@inheritdoc}
      * 
-     * @psalm-param mixed $value
+     * @psalm-param TTransformedValue|null $value
      */
     public function reverseTransform(mixed $value): ?Currency
     {
