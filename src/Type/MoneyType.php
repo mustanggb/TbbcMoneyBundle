@@ -40,7 +40,7 @@ class MoneyType extends Type
 
         $money = explode(' ', (string) $value, 2);
 
-        if (count($money) === 2) {
+        if (count($money) !== 2) {
             return null;
         }
 
