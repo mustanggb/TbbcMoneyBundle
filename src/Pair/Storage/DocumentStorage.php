@@ -22,6 +22,9 @@ class DocumentStorage implements StorageInterface
     {
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function loadRatioList(bool $force = false): array
     {
         if ((false === $force) && (count($this->ratioList) > 0)) {
@@ -53,7 +56,7 @@ class DocumentStorage implements StorageInterface
     }
 
     /**
-     * @psalm-param array<string, null|float> $ratioList
+     * {@inheritdoc}
      */
     public function saveRatioList(array $ratioList): void
     {
