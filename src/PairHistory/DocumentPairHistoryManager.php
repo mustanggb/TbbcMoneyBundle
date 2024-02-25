@@ -40,7 +40,7 @@ class DocumentPairHistoryManager implements PairHistoryManagerInterface
         /** @var DocumentRatioHistory $ratioHistory */
         $ratioHistory = $query->getSingleResult();
 
-        if (!isset($ratioHistory)) {
+        if (!($ratioHistory instanceof DocumentRatioHistory)) {
             return null;
         }
 
