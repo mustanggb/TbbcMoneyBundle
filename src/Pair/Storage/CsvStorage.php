@@ -53,6 +53,9 @@ class CsvStorage implements StorageInterface
             [$currencyCode, $ratio] = $data;
 
             // validate that currency exist in currency code list
+            if (null === $currencyCode) {
+                throw new MoneyException('error in ratioFileName '.$this->ratioFileName.' on line '.$row.', currency is null');
+            }
             // @codeCoverageIgnoreStart
             try {
                 // hack to throw an exception if currency doesn't exist
