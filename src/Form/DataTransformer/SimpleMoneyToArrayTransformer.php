@@ -7,7 +7,7 @@ namespace Tbbc\MoneyBundle\Form\DataTransformer;
 use Money\Money;
 
 /**
- * Transforms between a Money instance and an array.
+ * Transforms between a Money and an array.
  */
 class SimpleMoneyToArrayTransformer extends MoneyToArrayTransformer
 {

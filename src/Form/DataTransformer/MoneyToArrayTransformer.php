@@ -12,7 +12,7 @@ use Symfony\Component\Form\Exception\UnexpectedTypeException;
 use Symfony\Component\Form\Extension\Core\DataTransformer\MoneyToLocalizedStringTransformer;
 
 /**
- * Transforms between a Money instance and an array.
+ * Transforms between a Money and an array.
  */
 class MoneyToArrayTransformer implements DataTransformerInterface
 {

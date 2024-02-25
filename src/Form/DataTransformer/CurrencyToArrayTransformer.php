@@ -20,6 +20,8 @@ class CurrencyToArrayTransformer implements DataTransformerInterface
 {
     /**
      * {@inheritdoc}
+     * 
+     * @psalm-param Currency|null $value
      */
     public function transform(Currency $value): ?array
     {
@@ -35,6 +37,8 @@ class CurrencyToArrayTransformer implements DataTransformerInterface
 
     /**
      * {@inheritdoc}
+     * 
+     * @psalm-param array|null $value
      */
     public function reverseTransform(array $value): ?Currency
     {
