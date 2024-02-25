@@ -44,7 +44,7 @@ class MoneyType extends Type
             return null;
         }
 
-        return new Money((int) $amount, new Currency($currency));
+        return new Money((int) $money[1], new Currency($money[0]));
     }
 
     public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): ?string
