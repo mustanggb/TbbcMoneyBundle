@@ -13,6 +13,8 @@ use Symfony\Component\Form\Extension\Core\DataTransformer\MoneyToLocalizedString
 
 /**
  * Transforms between a Money and an array.
+ * 
+ * @implements DataTransformerInterface<Money, array>
  */
 class MoneyToArrayTransformer implements DataTransformerInterface
 {
@@ -26,7 +28,7 @@ class MoneyToArrayTransformer implements DataTransformerInterface
     /**
      * {@inheritdoc}
      * 
-     * @psalm-param mixed $value
+     * @psalm-param Money|null $value
      * 
      * @psalm-return array{tbbc_amount: string, tbbc_currency: Currency}|array{tbbc_amount: string}|null
      */
@@ -51,7 +53,7 @@ class MoneyToArrayTransformer implements DataTransformerInterface
     /**
      * {@inheritdoc}
      * 
-     * @psalm-param mixed $value
+     * @psalm-param array|null $value
      */
     public function reverseTransform(mixed $value): ?Money
     {
