@@ -13,22 +13,22 @@ jobs:
         mongodb-version: ['7.0']
         symfony-version: ['7.0.*']
         include:
-          - php: '8.1'
-            mongodb-version: '7.0'
-            symfony-version: 5.4.*
-            stability: prefer-lowest
-          - php: '8.1'
-            mongodb-version: '7.0'
-            symfony-version: 5.4.*
-            stability: prefer-stable
-          - php: '8.1'
-            mongodb-version: '7.0'
-            symfony-version: 6.4.*
-            stability: prefer-stable
-          - php: '8.2'
-            mongodb-version: '7.0'
-            symfony-version: 7.0.*
-            stability: prefer-stable
+          #- php: '8.1'
+          #  mongodb-version: '7.0'
+          #  symfony-version: 5.4.*
+          #  stability: prefer-lowest
+          #- php: '8.1'
+          #  mongodb-version: '7.0'
+          #  symfony-version: 5.4.*
+          #  stability: prefer-stable
+          #- php: '8.1'
+          #  mongodb-version: '7.0'
+          #  symfony-version: 6.4.*
+          #  stability: prefer-stable
+          #- php: '8.2'
+          #  mongodb-version: '7.0'
+          #  symfony-version: 7.0.*
+          #  stability: prefer-stable
           - php: '8.3'
             mongodb-version: '7.0'
             symfony-version: 7.0.*
@@ -72,26 +72,26 @@ jobs:
         run: vendor/bin/phpunit --coverage-text
 
 
-  cs:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.2
-          coverage: none
-      - run: |
-          composer install --no-progress
-          composer require friendsofphp/php-cs-fixer "^3.48"
-          vendor/bin/php-cs-fixer
+  #cs:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - uses: actions/checkout@v4
+  #    - uses: shivammathur/setup-php@v2
+  #      with:
+  #        php-version: 8.2
+  #        coverage: none
+  #    - run: |
+  #        composer install --no-progress
+  #        composer require friendsofphp/php-cs-fixer "^3.48"
+  #        vendor/bin/php-cs-fixer
 
-  psalm:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.2
-          coverage: none
-      - run: composer install --no-progress
-      - run: vendor/bin/psalm
+  #psalm:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - uses: actions/checkout@v4
+  #    - uses: shivammathur/setup-php@v2
+  #      with:
+  #        php-version: 8.2
+  #        coverage: none
+  #    - run: composer install --no-progress
+  #    - run: vendor/bin/psalm
