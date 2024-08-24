@@ -33,7 +33,6 @@ trait DocumentDatabaseTrait
 
         $code = $application->run(new ArrayInput([
             'command' => 'doctrine:mongodb:schema:create',
-            '--quiet' => true,
         ]), new NullOutput());
         self::assertSame(Command::SUCCESS, $code);
     }
