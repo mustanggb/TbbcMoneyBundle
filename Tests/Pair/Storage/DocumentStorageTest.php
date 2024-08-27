@@ -50,14 +50,14 @@ class DocumentStorageTest extends KernelTestCase
         return new static::$class($env, $debug, $configs);
     }
 
-    #public function testLoadDefaultCurrency(): void
-    #{
+    public function testLoadDefaultCurrency(): void
+    {
     #    $ratioList = $this->documentStorage->loadRatioList();
 
     #    $this->assertCount(1, $ratioList);
     #    $this->assertArrayHasKey('USD', $ratioList);
     #    $this->assertSame(1.0, $ratioList['USD']);
-    #}
+    }
 
     #public function testLoadForceOption(): void
     #{
