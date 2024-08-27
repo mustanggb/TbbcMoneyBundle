@@ -36,7 +36,7 @@ class DocumentStorageTest extends KernelTestCase
     protected function tearDown(): void
     {
         parent::tearDown();
-        #$this->dropDatabase();
+        $this->dropDatabase();
     }
 
     protected static function createKernel(array $options = []): KernelInterface
