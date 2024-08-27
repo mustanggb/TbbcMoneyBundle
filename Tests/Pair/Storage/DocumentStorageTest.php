@@ -21,22 +21,22 @@ class DocumentStorageTest extends KernelTestCase
     public function setUp(): void
     {
         parent::setUp();
-        self::$kernelOptions = [
-            'environment' => 'testDocument',
-            'configs' => [
-                __DIR__.'/../../config/document.yaml'
-            ],
-        ];
-        self::bootKernel(self::$kernelOptions);
-        $this->documentManager = self::getContainer()->get('doctrine_mongodb')->getManager();
-        $this->documentStorage = new DocumentStorage($this->documentManager, 'USD');
+        #self::$kernelOptions = [
+        #    'environment' => 'testDocument',
+        #    'configs' => [
+        #        __DIR__.'/../../config/document.yaml'
+        #    ],
+        #];
+        #self::bootKernel(self::$kernelOptions);
+        #$this->documentManager = self::getContainer()->get('doctrine_mongodb')->getManager();
+        #$this->documentStorage = new DocumentStorage($this->documentManager, 'USD');
         self::createDatabase();
     }
 
     protected function tearDown(): void
     {
         parent::tearDown();
-        $this->dropDatabase();
+        #$this->dropDatabase();
     }
 
     protected static function createKernel(array $options = []): KernelInterface
