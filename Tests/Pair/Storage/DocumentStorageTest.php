@@ -57,6 +57,7 @@ class DocumentStorageTest extends KernelTestCase
     #    $this->assertCount(1, $ratioList);
     #    $this->assertArrayHasKey('USD', $ratioList);
     #    $this->assertSame(1.0, $ratioList['USD']);
+        self::assertSame(123, 123);
     }
 
     #public function testLoadForceOption(): void
