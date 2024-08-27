@@ -45,13 +45,12 @@ trait DocumentDatabaseTrait
         $application = new Application($kernel);
         $application->setAutoExit(false);
 
-        $wasd = new BufferedOutput();
+        $output = new BufferedOutput();
         $code = $application->run(new ArrayInput([
             'command' => 'doctrine:mongodb:schema:drop',
             '-vvv' => true,
-        ]), $wasd);
-        fwrite(STDERR, print_r($wasd->fetch(), true));
-        self::assertSame('', $wasd->fetch());
+        ]), $output);
+        fwrite(STDERR, print_r($output->fetch(), true));
         self::assertSame(Command::SUCCESS, $code);
     }
 }
