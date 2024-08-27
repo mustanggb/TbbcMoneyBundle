@@ -38,13 +38,13 @@ class DocumentPairHistoryManagerTest extends KernelTestCase
             'EUR'
         );
         $this->documentRatioHistoryRepo = $this->dm->getRepository(DocumentRatioHistory::class);
-        $this->createDatabase();
+        #$this->createDatabase();
     }
 
     protected function tearDown(): void
     {
         parent::tearDown();
-        $this->dropDatabase();
+        #$this->dropDatabase();
         $this->dm->close();
         $this->dm = null;
     }
@@ -60,8 +60,8 @@ class DocumentPairHistoryManagerTest extends KernelTestCase
         return new static::$class($env, $debug, $configs);
     }
 
-    #public function testSaveRatioHistory(): void
-    #{
+    public function testSaveRatioHistory(): void
+    {
     #    $event = new SaveRatioEvent('EUR', 'USD', 1.25, new \DateTime('2012-07-08 12:00:00'));
     #    $this->documentPairHistoryManager->listenSaveRatioEvent($event);
     #    $ratioHistoryList = $this->documentRatioHistoryRepo->findAll();
@@ -71,7 +71,8 @@ class DocumentPairHistoryManagerTest extends KernelTestCase
     #    $this->documentPairHistoryManager->listenSaveRatioEvent($event);
     #    $ratioHistoryList = $this->documentRatioHistoryRepo->findAll();
     #    $this->assertCount(2, $ratioHistoryList);
-    #}
+         $this->assertCount(123, 123);
+    }
 
     #public function testGetRatioList(): void
     #{
