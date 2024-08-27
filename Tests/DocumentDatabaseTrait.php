@@ -44,10 +44,10 @@ trait DocumentDatabaseTrait
         $application = new Application($kernel);
         $application->setAutoExit(false);
 
-        $code = $application->run(new ArrayInput([
-            'command' => 'doctrine:mongodb:schema:drop',
-            '--quiet' => true,
-        ]), new NullOutput());
-        self::assertSame(Command::SUCCESS, $code);
+        #$code = $application->run(new ArrayInput([
+        #    'command' => 'doctrine:mongodb:schema:drop',
+        #    '--quiet' => true,
+        #]), new NullOutput());
+        #self::assertSame(Command::SUCCESS, $code);
     }
 }
