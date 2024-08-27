@@ -28,8 +28,8 @@ class DocumentStorageTest extends KernelTestCase
         #    ],
         #];
         self::bootKernel(self::$kernelOptions);
-        #$this->documentManager = self::getContainer()->get('doctrine_mongodb')->getManager();
-        #$this->documentStorage = new DocumentStorage($this->documentManager, 'USD');
+        $this->documentManager = self::getContainer()->get('doctrine_mongodb')->getManager();
+        $this->documentStorage = new DocumentStorage($this->documentManager, 'USD');
         self::createDatabase();
     }
 
