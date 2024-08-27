@@ -69,7 +69,7 @@ jobs:
       - name: Execute tests
         env:
           SYMFONY_DEPRECATIONS_HELPER: 'weak'
-        run: vendor/bin/phpunit --coverage-text
+        run: vendor/bin/phpunit --coverage-text --debug
 
 
   #cs:
