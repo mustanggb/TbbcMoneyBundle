@@ -71,7 +71,7 @@ class DocumentPairHistoryManagerTest extends KernelTestCase
     #    $this->documentPairHistoryManager->listenSaveRatioEvent($event);
     #    $ratioHistoryList = $this->documentRatioHistoryRepo->findAll();
     #    $this->assertCount(2, $ratioHistoryList);
-         $this->assertCount(123, 123);
+        $this->assertSame(123, 123);
     }
 
     #public function testGetRatioList(): void
