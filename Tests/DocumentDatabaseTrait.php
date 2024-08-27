@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
-use Symfony\Component\Console\Output\ConsoleOutput;
+use Symfony\Component\Console\Output\BufferedOutput;
 
 trait DocumentDatabaseTrait
 {
@@ -45,9 +45,11 @@ trait DocumentDatabaseTrait
         $application = new Application($kernel);
         $application->setAutoExit(false);
 
+        $wasd = new BufferedOutput();
         $code = $application->run(new ArrayInput([
             'command' => 'doctrine:mongodb:schema:drop',
-        ]), new ConsoleOutput());
+        ]), new BufferedOutput());
+        self::assertSame('', $wasd);
         self::assertSame(Command::SUCCESS, $code);
     }
 }
