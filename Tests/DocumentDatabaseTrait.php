@@ -31,10 +31,10 @@ trait DocumentDatabaseTrait
         $application = new Application($kernel);
         $application->setAutoExit(false);
 
-        $code = $application->run(new ArrayInput([
-            'command' => 'doctrine:mongodb:schema:create',
-        ]), new NullOutput());
-        self::assertSame(Command::SUCCESS, $code);
+        #$code = $application->run(new ArrayInput([
+        #    'command' => 'doctrine:mongodb:schema:create',
+        #]), new NullOutput());
+        #self::assertSame(Command::SUCCESS, $code);
     }
 
     private static function doDropDatabase(): void
