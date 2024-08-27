@@ -49,8 +49,8 @@ trait DocumentDatabaseTrait
         $code = $application->run(new ArrayInput([
             'command' => 'doctrine:mongodb:schema:drop',
         ]), new BufferedOutput());
-        fwrite(STDERR, print_r($wasd->fetch(), true));
-        self::assertSame('', $wasd);
+        print_r($wasd->fetch(), true);
+        self::assertSame('', $wasd->fetch());
         self::assertSame(Command::SUCCESS, $code);
     }
 }
